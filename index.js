@@ -2,7 +2,7 @@ const express = require("express")
 const multer = require("multer")
 
 const app = express()
-let PORT = process.env.PORT || 5000
+let PORT = process.env.PORT || 8080
 
 
 const fileStorageEngine = multer.diskStorage({
@@ -22,6 +22,10 @@ const upload = multer({ storage: fileStorageEngine })
 app.post("/single", upload.single("image"), (req, res) => {
     console.log(req.file)
     res.send("poslano")
+})
+
+app.get("/api", (req, res)=>{
+    res.send("radi mali sve kako treba :D")
 })
 
 
